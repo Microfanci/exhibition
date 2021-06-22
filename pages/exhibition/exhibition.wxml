@@ -1,0 +1,82 @@
+<!--pages/exhibiton/exhibition.wxml-->
+<view class="container">
+  <view class="exhibition-list">
+      <view class="exhibition-list-banner">
+        <image class="exhibition-list-banner-img" src="{{detail.exhibitionPosterUrl}}" alt="" ></image>
+    </view>
+    <view class="exhibition-list-info">
+      <view class="exhibition-list-info-title" >
+        <view class="exhibition-list-info-title-left">{{detail.exhibitionName}}</view>
+        <view class="exhibition-list-info-title-right">共<text style="color:#f99">{{detail.exhibitionActivityAmount}}</text>场</view>
+      </view>
+      <view class="exhibition-list-info-time" >
+        <icon class="iconfont icon-shijian"></icon>
+        {{detail.exhibitionStartTime}}
+      </view>
+      <view class="exhibition-list-info-position" >
+        <icon class="iconfont icon-didian"></icon>
+        {{detail.exhibitionAddress}}
+      </view>
+    </view>
+  </view>
+  <view class="tip">
+    温馨提示：每位用户可选择参与一场活动
+  </view>
+  <view class="swiper-tab">
+      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">活动列表</view>
+      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">展会介绍</view>
+  </view>
+  <swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}" current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange">
+    <swiper-item class="swiper">
+    <!--  -->
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot"> 
+     <!--  -->
+     <view class="active" wx:for="{{detail.activeList}}"  wx:key="key">
+        <view class="active-list">
+          <view class="active-list-info">
+            <view class="active-list-info-title">
+            {{item.activeName}}
+            <text class="{{activeStateClass[item.activeStatus]}}" wx:if="item.activeStatus === 0">{{activeState[item.activeStatus]}}</text>
+            </view>
+            <view>
+              <view style="font-size:10pt" >
+              <icon class="iconfont icon-shijian"></icon>
+              {{item.activeStartTime}}-{{item.activeEndTime}}
+              </view>
+              <view>
+                <icon class="iconfont icon-didian"></icon>
+                {{item.activeAddress}}
+              </view>
+            </view>
+          </view>
+          <view class="active-list-status-end">
+              <button wx:if="{{item.activeUserAppointmentStatus === '0'}}" size="mini" class="btn-fixed" type="primary" data-index="{{index}}" bindtap="isPermitOrder">可预约</button>
+            <view class="order-btn" wx:if="{{item.activeUserAppointmentStatus === '1'}}">
+              已预约
+              <button size="mini" class="btn-fixed" type="primary" data-index="{{index}}" 
+              catchtap="isPermitOrder" >签到</button>
+            </view>
+            <view class="order-btn" wx:if="{{item.activeUserAppointmentStatus === '2'}}">
+             
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--  -->
+    </scroll-view>
+
+
+    <!--  -->
+      
+    </swiper-item>
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot"> 
+      <view>
+        <image class="img" mode='widthFix' src="./../images/exhibition-introduction.jpg"></image>
+        <image class="img" mode='widthFix' src="./../images/exhibition-introduction.jpg"></image>
+        <image class="img" mode='widthFix' src="./../images/exhibition-introduction.jpg"></image>
+      </view>
+    </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

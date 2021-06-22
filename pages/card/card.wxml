@@ -1,0 +1,30 @@
+<!--pages/card/card.wxml-->
+<view class="main">
+  <view class="title">
+    <text class="title-t">衡道病理诚邀您参会</text>
+    <view class="title-b">请填写您的名片信息</view>
+  </view>
+  <view class="info">
+    <form catchsubmit="formSubmit">
+      <view class="info-item">
+        <text class="info-item-label">姓名</text>
+        <view class="info-item-line">|</view>
+        <input class="info-item-input" name="userName" placeholder="请输入您的姓名" oninput="inputOne"/>
+      </view>
+      <view class="info-item">
+        <text class="info-item-label">医院</text>
+        <view class="info-item-line">|</view>
+        <input class="info-item-input" name="userWorkUnit" placeholder="请输入您的医院" oninput="inputTwo"/>
+      </view>
+      <view class="info-item">
+        <text class="info-item-label">职务</text>
+        <view class="info-item-line">|</view>
+        <input class="info-item-input" name="userJobs" placeholder="请输入您的职务" oninput="inputThree"/>
+      </view>
+
+      <view class="info-btn-area ">
+        <button class="{{(a|| b || c) ? 'btn-dis':' btn-blue'}}" bindgetphonenumber="getPhoneNumber" formType="submit" disabled="{{a || b || c}}" open-type="getPhoneNumber">授权联系方式登录</button>
+      </view>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/introduction/introduction",
+    "pages/my/my",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/card/card",
+    "pages/exhibition/exhibition",
+    "pages/contact/contact",
+    "pages/sign/sign"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3871F2",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "kbone":true,
+    "weui":true
+  }
+}

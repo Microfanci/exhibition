@@ -1,0 +1,40 @@
+/* pages/card/card.wxss */
+page { 
+  padding: 10pt;
+  box-sizing: border-box;
+  background: #F6F6F6;
+}
+.main{
+  background: #ffffff;
+  height: 100%;
+  padding: 10pt;
+}
+.title{
+  margin: 20pt 10pt;
+}
+.title-t{
+  font-size: 14pt;
+}
+.title-b{
+  font-size: 10pt;
+  color: #999999;
+}
+.info{
+  margin: 20pt 10pt;
+}
+.info-item{
+  padding: 10pt;
+  border-bottom: 1pt solid #e5e5e5;
+  display: flex;
+}
+.info-item-line{
+  color: #999999;
+  margin: 0 5pt;
+}
+.info-item-input{
+  color: #999999;
+  display: inline!important;
+}
+.info-btn-area{
+  margin-top: 30pt;
+}

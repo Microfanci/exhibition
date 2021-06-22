@@ -1,0 +1,82 @@
+<!--pages/my/my.wxml-->
+<view class=".back">  
+  <view class="my">
+  <view class="my-head">
+    <open-data style="border-radius:50%" class="my-head" type="userAvatarUrl"></open-data>
+  </view>
+    <view class="my-info">
+      <open-data class="my-info-name" type="userNickName"></open-data>
+      <view class="my-info-job">职务：{{userJob}}</view>
+    </view>
+  </view>
+  <view class="joinInfo">
+  <text wx:if="{{exbUserOperationList.length === 0}}">暂时没有参展信息</text>
+  <text wx:if="{{exbUserOperationList.length > 0}}">您累计参展{{count}}场</text>
+  </view>
+  <view class="container">
+    <view class="info">
+      <view class="info-title">个人信息</view>
+      <view class="info-item">
+        <text class="info-item-l">姓名</text>
+        <view>
+          <text>{{userName}}</text>
+          <icon class="iconfont icon-gengduohui nav-icon"></icon>
+        </view>
+      </view>
+      <view class="info-item">
+        <text class="info-item-l">岗位</text>
+        <view>
+          <text>{{userJob}}</text>
+          <icon class="iconfont icon-gengduohui nav-icon"></icon>
+        </view>
+      </view>
+      <view class="info-item">
+        <text class="info-item-l">医院</text>
+        <view>
+          <text>{{userWorkUnit}}</text>
+          <icon class="iconfont icon-gengduohui nav-icon"></icon>
+        </view>
+      </view>
+      <view class="info-item info-item-border">
+        <text class="info-item-l">联系方式</text>
+        <view>
+          <text>{{userPhone}}</text>
+          <icon class="iconfont icon-gengduohui nav-icon"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="record">
+      <view class="record-title">参展记录</view>
+        <view class="record-list">
+        <view class="exhibition-list" wx:for="{{exbUserOperationList}}" wx:key='key'>
+          <view class="exhibition-list-banner">
+            <image class="exhibition-list-banner-img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201409%2F08%2F20140908130732_kVXzh.jpeg&refer=http%3A%2F%2Fcdn.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1626249758&t=f9f26219e759ae07a787e7b9c0a3ea81" alt="" ></image>
+            <view class="banner-floating">
+              <text>{{item.exhibitionName}}</text>
+            </view>
+          </view>
+          <view class="active">
+            <view class="exhibition-list-info">
+              <view class="active-left">
+              <view>{{item.activeName}}</view>
+              <view class="exhibition-list-info-time" >
+                <icon class="iconfont icon-shijian"></icon>
+                {{item.updateTime}}
+              </view>
+              <view class="exhibition-list-info-position" >
+                <icon class="iconfont icon-didian"></icon>
+                  上海宝山体育馆
+                  </view>
+              </view>
+              <view class="active-r active-list-status-end">
+              已结束
+              </view>
+            </view>
+            <view wx:if="" class="active-line"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

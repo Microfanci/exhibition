@@ -1,0 +1,9 @@
+<!--pages/contact/contact.wxml-->
+<view>
+        <image class="img" mode='widthFix' src="./../images/contact-01.jpg"></image>
+        <image class="img" mode='widthFix' src="./../images/contact-02.jpg"></image>
+        <image class="img" mode='widthFix' src="./../images/contact-03.jpg"></image>
+        <image class="img" mode='widthFix' src="./../images/contact-04.jpg"></image>
+        <image class="img" mode='widthFix' src="./../images/contact-05.jpg"></image>
+        <image class="img" mode='widthFix' src="./../images/contact-06.jpg"></image>
+      </view>

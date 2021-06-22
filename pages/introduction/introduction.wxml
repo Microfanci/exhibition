@@ -1,0 +1,8 @@
+<!--pages/introductin/introduction.wxml-->
+<view >
+  <image class="img" mode='widthFix' src="./../images/introruction-01.jpg"></image>
+  <image class="img" mode='widthFix' src="./../images/introruction-02.jpg"></image>
+  <image class="img" mode='widthFix' src="./../images/introruction-03.jpg"></image>
+  <image class="img" mode='widthFix' src="./../images/introruction-04.jpg"></image>
+  <image class="img" mode='widthFix' src="./../images/introruction-05.jpg"></image>
+</view>

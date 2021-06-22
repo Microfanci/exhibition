@@ -1,0 +1,41 @@
+<!--pages/home/home.wxml-->
+<view class="back">
+  <view class="nav-tab">
+    <view class="nav-tab-item" data-url="/pages/my/my" bindtap="goto">
+      <icon class="iconfont icon-gerenzhongxinbaise nav-icon"></icon>
+      <view class="nav-tab-item-font">个人中心</view>
+    </view>
+    <view class="nav-tab-item" data-url="/pages/introduction/introduction" bindtap="goto">
+      <icon class="iconfont icon-hengdaojieshao nav-icon"></icon>
+      <view class="nav-tab-item-font">衡道介绍</view>
+    </view>
+    <view class="nav-tab-item" data-url="/pages/contact/contact" bindtap="goto">
+      <icon class="iconfont icon-lianxiwomen nav-icon"></icon>
+      <view class="nav-tab-item-font">联系我们</view>
+    </view>
+  </view>
+  <!--  -->
+  <!--  -->
+  <view class="container">
+    <view class="exhibition-title">展会列表</view>
+    <view wx:for="{{exhibitionList}}" wx:key="key"  class="exhibition-list" data-detail="{{item}}" data-url="/pages/exhibition/exhibition" bindtap="goto">
+      <view class="exhibition-list-banner">
+      <image class="exhibition-list-banner-img" src="{{item.exhibitionPosterUrl}}" alt=""></image>
+      </view>
+      <view class="exhibition-list-info">
+        <view class="exhibition-list-info-title">
+          <view class="exhibition-list-info-title-left">{{item.exhibitionName}}</view>
+          <view class="exhibition-list-info-title-right">共<text style="color:#f99">{{item.exhibitionActivityAmount}}</text>场</view>
+        </view>
+        <view class="exhibition-list-info-time" >
+          <icon class="iconfont icon-shijian"></icon>
+          {{item.exhibitionEndTime}}
+        </view>
+        <view class="exhibition-list-info-position" >
+          <icon class="iconfont icon-didian"></icon>
+          {{item.exhibitionAddress}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

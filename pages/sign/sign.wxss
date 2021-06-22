@@ -1,0 +1,91 @@
+/* pages/sign/sign.wxss */
+.container{
+  background:none;
+}
+.special{
+  color: #3871F2 !important;
+}
+.info-btn-area{
+  margin-top: 20pt;
+}
+.tip{
+  text-align: center;
+  position: absolute;
+  bottom: 20pt;
+  left: 0;
+  right: 0;
+  font-size: 10pt;
+}
+.my{
+  display: flex;
+  align-items: center;
+  margin: 10pt 5pt 15pt;
+}
+.my-head{
+  width: 40pt;
+  height: 40pt;
+  background: #ffffff;
+  border-radius: 50%;
+}
+.my-info{
+  margin-left: 10pt;
+  color: #ffffff;
+}
+.my-info-name{
+  color: #ffffff;
+  font-size: 12pt;
+}
+.my-info-job{
+  color: #ffffff;
+  font-size: 10pt;
+}
+/* 展会列表 */
+.card{
+  background: #ffffff;
+  padding: 10pt;
+  border-radius: 5pt;
+}
+ /* card-top */
+.card-top{
+  display: flex;
+  align-items: center;
+}
+.card-top-title{
+  font-size: 14pt;
+  font-weight: 600;
+}
+.card-top-status{
+  font-size: 10pt;
+  margin-left: 4pt;
+  padding: 2pt 4pt;
+  border-radius: 2pt;
+  font-size: 10pt;
+  color: #3871F2;
+  background: rgba(56, 113, 242, 0.1);
+}
+/* card-center */
+.card-center{
+  margin: 20pt 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-center-time{
+  font-size: 14pt;
+  font-weight: 600;
+}
+.card-center-date{
+  margin-top: 5pt;
+  font-size: 11pt;
+}
+.card-center-duration{
+  display: flex;
+  font-size: 6pt;
+  align-items: center;
+}
+.card-center-duration-word{
+ border: 1px solid #999999;
+ font-size: 9pt;
+ padding: 2pt 3pt;
+ border-radius: 2pt;
+}

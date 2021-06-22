@@ -1,0 +1,51 @@
+<!--pages/sign/sign.wxml-->
+<view class="back">
+  <view class="my">
+    <view class="my-head"></view>
+    <view class="my-info">
+      <view class="my-info-name">您的名字</view>
+      <view class="my-info-job">职务</view>
+    </view>
+  </view>
+  <view class="container">
+    <view class="card">
+      <view class="card-top">
+        <view class="card-top-title">2020第二届展会</view>
+        <view class="card-top-status">已预约</view>
+      </view>
+      <view class="card-center">
+        <view class="card-center-lr">
+          <view class="card-center-time">13:00</view>
+          <view class="card-center-date">2020年11月12日</view>
+        </view>
+        <view class="card-center-duration">
+        <view>——</view>
+        <view class="card-center-duration-word">一小时</view>
+        <view>——</view>
+        </view>
+        <view class="card-center-lr">
+          <view class="card-center-time">13:00</view>
+          <view class="card-center-date">2020年11月12日</view>
+        </view>
+      </view>
+      <view class="card-bottom">
+        <view>
+          <icon class="iconfont icon-shijian"></icon>
+          2020-12-12 12:00-13:00
+        </view>
+        <view>
+          <icon class="iconfont icon-didian"></icon>
+          上海宝山体育馆
+        </view>
+      </view>
+    </view>
+    <view class="info-btn-area ">
+      <button class="btn-blue" formType="submit" bindtap="openConfirm">立即签到</button>
+    </view>
+    <mp-dialog ext-class="special" title="test" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+        <view>test content</view>
+    </mp-dialog>
+    <view class="tip">温馨提示：每位用户可选择参与一场活动</view>
+  </view>
+</view>
+  

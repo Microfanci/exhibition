@@ -1,0 +1,5 @@
+/* pages/introductin/introduction.wxss */
+.img{
+  width: 100%;
+  display: block;
+}
