@@ -63,5 +63,6 @@
 }
 .exhibition-list-info-title-right{
   font-size: 11pt;
+  min-width: 40pt;
   color: #999999;
 }

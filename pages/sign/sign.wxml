@@ -1,50 +1,56 @@
 <!--pages/sign/sign.wxml-->
 <view class="back">
   <view class="my">
-    <view class="my-head"></view>
+  <view class="my-head">
+    <open-data style="border-radius:50%" class="my-head" type="userAvatarUrl"></open-data>
+  </view>
     <view class="my-info">
-      <view class="my-info-name">您的名字</view>
-      <view class="my-info-job">职务</view>
+      <open-data class="my-info-name" type="userNickName"></open-data>
+      <!-- <view class="my-info-job">职务：{{userJob}}</view> -->
     </view>
   </view>
   <view class="container">
     <view class="card">
       <view class="card-top">
-        <view class="card-top-title">2020第二届展会</view>
-        <view class="card-top-status">已预约</view>
+        <view class="card-top-title">{{activeName}}</view>
+        <view class="card-top-status"><text class="card-top-status-btn">{{activeState[activeStatus]}}</text></view>
       </view>
       <view class="card-center">
         <view class="card-center-lr">
-          <view class="card-center-time">13:00</view>
-          <view class="card-center-date">2020年11月12日</view>
+          <view class="card-center-time">{{activeStartTimeTwo}}</view>
+          <view class="card-center-date">{{activeStartTimeOne}}</view>
         </view>
         <view class="card-center-duration">
-        <view>——</view>
-        <view class="card-center-duration-word">一小时</view>
-        <view>——</view>
+        <view style="width:24pt;background:#666666;height:1pt;"></view>
+        <!-- <view class="card-center-duration-word">一小时</view>
+        <view>——</view> -->
         </view>
         <view class="card-center-lr">
-          <view class="card-center-time">13:00</view>
-          <view class="card-center-date">2020年11月12日</view>
+          <view class="card-center-time">{{activeEndTimeTwo}}</view>
+          <view class="card-center-date">{{activeEndTimeOne}}</view>
         </view>
       </view>
       <view class="card-bottom">
-        <view>
+        <!-- <view>
           <icon class="iconfont icon-shijian"></icon>
           2020-12-12 12:00-13:00
-        </view>
+        </view> -->
         <view>
           <icon class="iconfont icon-didian"></icon>
-          上海宝山体育馆
+          {{activeAddress}}
         </view>
       </view>
     </view>
+    <text style="text-align:center;display:block;margin-top:30pt;color:#E95E6A" wx:if="{{msg !=='成功'}}" >{{msg}}</text>
     <view class="info-btn-area ">
-      <button class="btn-blue" formType="submit" bindtap="openConfirm">立即签到</button>
+      <!-- <button style="width:100pt;background:#f99" formType="submit" bindtap="openConfirm">返回首页</button> -->
+      <button style="color:#ffffff;border-radius:44pt;width:100pt;background:#3871F2" data-url="/pages/home/home" bindtap="goto">返回首页</button>
+      <button wx:if="{{msg==='成功'}}" style="color:#3871F2;border-radius:44pt;width:100pt;background:rgba(56, 113, 242, 0.2)">{{'签到'+msg}}</button>
     </view>
-    <mp-dialog ext-class="special" title="test" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+    <!-- <view vx:else >{{msg}}</view> -->
+    <!-- <mp-dialog ext-class="special" title="test" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
         <view>test content</view>
-    </mp-dialog>
+    </mp-dialog> -->
     <view class="tip">温馨提示：每位用户可选择参与一场活动</view>
   </view>
 </view>

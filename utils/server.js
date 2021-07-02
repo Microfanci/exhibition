@@ -1,11 +1,12 @@
+const app = getApp()
 // 封装请求
 const GET = 'GET';
 const POST = 'POST';
 const PUT = 'PUT';
 const FORM = 'FORM';
 const DELETE = 'DELETE';
-
-const baseURL = 'http://192.168.30.93:8080/';
+const baseURL = 'https://enroll-api-tools.histo.cn/';
+// const baseURL = 'http://192.168.30.93:8080/';
 // const baseURL = 'http://127.0.0.1:8080/';
 function request(method, url, data) {
   const token = wx.getStorageSync('token') || []
@@ -33,13 +34,24 @@ function request(method, url, data) {
                     resolve(res);
                 } else {
                   if (res.data.code == 401) {
-                    // wx.redirectTo({
-                    //   url: '/pages/card/card'
+                    app.globalData.employ = null
+                    // console.log('重置employ')
+                    wx.reLaunch({
+                      url: '/pages/center/center'
+                    })
+                    
+                    // app.getToken().then(()=>{
+                      
                     // })
-                    console.log(2222)
                     // wx.clearStorage('token','')
                     // wx.clearStorage('USERCODE','')
                     // getApp().gettoken()
+                  } 
+                  if (res.data.code == 500) {
+                    app.globalData.employ = null
+                    wx.reLaunch({
+                      url: '/pages/center/center'
+                    })
                   } 
                     //其他异常
                     reject('运行时错误,请稍后再试');

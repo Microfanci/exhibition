@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    activeState:['未开始','进行中','已结束'],
+    activeStateClass:['active-start','active-pedding','active-end'],
     userJob: '',
     userName: '',
     userPhone: '',
@@ -18,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getPhoneData()
   },
 
   /**
@@ -31,10 +33,10 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    // if(this.data.userPhone)
+  getPhoneData(){
     const userCode = wx.getStorageSync('USERCODE')
       server.request('get','exhibition/user/usercode',{userCode}).then(res=>{
+        console.log(res,'exlist')
         if(res.data.data.userPhone){
           this.setData({
             userJob: res.data.data.userJobs,
@@ -44,20 +46,11 @@ Page({
             exbExhibitionList: res.data.data.exbExhibitionList,
             count: res.data.data.exbExhibitionList.length
           })
-        }else{
-          wx.navigateTo({
-            url: '/pages/card/card',
-          })
         }
       })
-    //  wx.navigateTo({
-    //                   url: '/pages/card/card?type='+'my'
-    //                 })
-    // const usercode = wx.getStorageSync('USERCODE')
-
-    // server.request('get','exhibition/user/usercode/',{userCode:usercode}).then(res=>{
-    //   console.log(res,'user')
-    // })
+  },
+  onShow: function () {
+  
   },
 
   /**

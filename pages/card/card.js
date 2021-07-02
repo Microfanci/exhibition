@@ -6,18 +6,22 @@ Page({
    * 页面的初始数据
    */
   data: {
+    activeCode: '',//从扫码页面传过来的签到的活动activeCode
+    excode: '',//从扫码页面传过来的展会码exhibitionCode
+    type: '',// 扫码的类型type：detail/si g n
+    // item: '', // 从首页跳转详情传过来的活动详情参数
+    nextPage: '', // 填写信息完成后将要去的页面
     userInfo: {},
     a:true,
     b:true,
-    c:true
+    c:true,
+    flag:false
   },
   inputOne(e){
-    console.log(e,'input')
     if(e.detail.value){
       this.setData({
         a: false
       })
-      console.log(this.data.a)
     }else{
       this.setData({
         a: true
@@ -25,12 +29,10 @@ Page({
     }
   },
   inputTwo(e){
-    console.log(e,'input')
     if(e.detail.value){
       this.setData({
         b: false
       })
-      console.log(this.data.b)
     }else{
       this.setData({
         b: true
@@ -38,12 +40,10 @@ Page({
     }
   },
   inputThree(e){
-    console.log(e,'input')
     if(e.detail.value){
       this.setData({
         c: false
       })
-      console.log(this.data.c)
     }else{
       this.setData({
         c: true
@@ -52,7 +52,9 @@ Page({
   },
   formSubmit(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    
+    this.setData({
+      flag:true
+    })
     this.setData({
       userInfo:e.detail.value
     })
@@ -60,10 +62,12 @@ Page({
   },
 
   getPhoneNumber (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
+    console.log(123)
+    
+    // console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    // console.log(e.detail.errMsg)
+    // console.log(e.detail.iv)
+    // console.log(e.detail.encryptedData)
 
     const phoneObj = {
       encryptedData:e.detail.encryptedData,
@@ -71,7 +75,7 @@ Page({
     }
     const userCode = wx.getStorageSync('USERCODE')
     const {userName,userWorkUnit,userJobs} = this.data.userInfo
-    console.log(userName,userWorkUnit,userJobs,'ppp')
+    console.log(userName,userWorkUnit,userJobs,'用户填写的信息')
     if(phoneObj.encryptedData && phoneObj.iv){
       const submitData = {
         userPhone: JSON.stringify(phoneObj),
@@ -81,12 +85,17 @@ Page({
         userJobs
       }
       console.log(submitData,'sss')
+      console.log(this.data.nextPage,this.data.excode,this.data.activeCode,'sss')
       //提交手机号和用户信息等数据
-      server.request('put','exhibition/user',submitData).then(res=>{
-        console.log(res)
+      server.request('post','exhibition/user',submitData).then(res=>{
+        console.log(res, '填写手机号接口调用')
         if(res.data.code === 200){
-          wx.navigateBack({
-            delta: 1,
+          console.log(res, '填写手机号成功')
+          wx.showToast({
+            title: '填写信息成功'
+          })
+          wx.reLaunch({
+            url: this.data.nextPage + '?exhibitionCode=' + this.data.excode + '&activeCode='+ this.data.activeCode + '&type=' + this.data.type,
           })
         }
       })
@@ -96,16 +105,21 @@ Page({
       })
     }
   },
-  // getPhone(){
-  //   console.log(e.detail.errMsg)
-  //   console.log(e.detail.iv)
-  //   console.log(e.detail.encryptedData)
-  // },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options,'card接收的页面')
+    var nextPage = options.target
+    var exhibitionCode = options.exhibitionCode
+    this.setData({
+      nextPage: nextPage,
+      activeCode: options.activeCode,
+      excode:exhibitionCode,
+      type:options.type
+    })
+    console.log(this.data,'data')
+    // debugger
   },
 
   /**

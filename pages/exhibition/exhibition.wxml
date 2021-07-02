@@ -2,16 +2,16 @@
 <view class="container">
   <view class="exhibition-list">
       <view class="exhibition-list-banner">
-        <image class="exhibition-list-banner-img" src="{{detail.exhibitionPosterUrl}}" alt="" ></image>
+        <image class="exhibition-list-banner-img" src="{{detail.exhibitionBannerUrl}}" alt="" ></image>
     </view>
     <view class="exhibition-list-info">
       <view class="exhibition-list-info-title" >
         <view class="exhibition-list-info-title-left">{{detail.exhibitionName}}</view>
-        <view class="exhibition-list-info-title-right">共<text style="color:#f99">{{detail.exhibitionActivityAmount}}</text>场</view>
+        <view class="exhibition-list-info-title-right">共 <text style="color:#3871F2">{{detail.exhibitionActivityAmount ? detail.exhibitionActivityAmount :0}}</text> 场</view>
       </view>
       <view class="exhibition-list-info-time" >
         <icon class="iconfont icon-shijian"></icon>
-        {{detail.exhibitionStartTime}}
+        {{detail.exhibitionStartTime}} ～ {{detail.exhibitionEndTime}}
       </view>
       <view class="exhibition-list-info-position" >
         <icon class="iconfont icon-didian"></icon>
@@ -22,26 +22,37 @@
   <view class="tip">
     温馨提示：每位用户可选择参与一场活动
   </view>
-  <view class="swiper-tab">
-      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">活动列表</view>
-      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">展会介绍</view>
+  <!-- 切换按钮 -->
+  <view class="tab">
+      <view class="{{current === '0' ? 'actve active-show': 'actve'}}" data-current="0" bindtap="swichTab">活动列表</view>
+      <view class="{{current === '1' ? 'actve active-show': 'actve'}}" data-current="1" bindtap="swichTab">展会介绍</view>
   </view>
-  <swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}" current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange">
-    <swiper-item class="swiper">
-    <!--  -->
-    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot"> 
-     <!--  -->
-     <view class="active" wx:for="{{detail.activeList}}"  wx:key="key">
-        <view class="active-list">
+  <!-- 切换的容器 -->
+  <!-- <button style="width:100pt;background:#f99" formType="submit" bindtap="isPermitOrder">返回首页</button> -->
+  
+  <view class="success-toast-back" title="test" wx:if="{{successToast}}">
+        <view class="success-toast-white">  
+          <image class="success-toast-img" style="width:188px;height:196px;" src="../images/sign-success.png"></image> 
+          <view style="margin:138px auto 30px;text-align:center">预约成功，请准时参加活动！</view>
+          <button style="background:#3771F2;border-radius:44pt;margin: 0 auto;color:#ffffff" bindtap="close">好的</button>
+        </view>
+    </view>
+  <mp-dialog ext-class="special" title="每人仅可约一场" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+        <view>{{submitData.activeName}}</view>
+        <view style="color:#E95E6A;margin:5pt;">是否确认预约该场活动？</view>
+    </mp-dialog>
+  <view class="{{current === '1' ? 'list-show list': 'list'}}" data-current="0">
+    <view class="activeList" wx:for="{{detail.activeList}}"  wx:key="key" data-key="{{index}}" bindtap="showborder">
+        <view class="{{key === index ? 'active-border active-list':'active-list'}}">
           <view class="active-list-info">
             <view class="active-list-info-title">
             {{item.activeName}}
-            <text class="{{activeStateClass[item.activeStatus]}}" wx:if="item.activeStatus === 0">{{activeState[item.activeStatus]}}</text>
+            <view style="width:30pt;text-align:center" class="{{activeStateClass[item.activeStatus]}}" wx:if="item.activeStatus === 0">{{activeState[item.activeStatus]}}</view>
             </view>
             <view>
               <view style="font-size:10pt" >
               <icon class="iconfont icon-shijian"></icon>
-              {{item.activeStartTime}}-{{item.activeEndTime}}
+              {{item.activeStartTime}}
               </view>
               <view>
                 <icon class="iconfont icon-didian"></icon>
@@ -50,11 +61,16 @@
             </view>
           </view>
           <view class="active-list-status-end">
-              <button wx:if="{{item.activeUserAppointmentStatus === '0'}}" size="mini" class="btn-fixed" type="primary" data-index="{{index}}" bindtap="isPermitOrder">可预约</button>
-            <view class="order-btn" wx:if="{{item.activeUserAppointmentStatus === '1'}}">
+            <!-- 注意：有改动，2---0 -->
+              <button wx:if="{{item.activeUserAppointmentStatus === '0'}}" size="mini" class="btn-fixed" type="primary" data-index="{{index}}" data-type="appoint" bindtap="isPermitOrder">可预约</button>
+            <!-- <view style="color:#4575FF" class="order-btn" wx:if="{{item.activeUserAppointmentStatus === '1' && item.activeUserSignStatus !== '1' }}">
+              <button wx:if="{{item.activeUserSignStatus === '0'}}" size="mini" class="btn-fixed" type="primary" data-index="{{index}}"   data-type="sign" bindtap="isPermitOrder">已预约</button>
+            </view> -->
+            <view style="color:#3BC1A4" class="order-btn" wx:if="{{item.activeUserSignStatus === '1'}}">
+              已签到
+            </view>
+            <view style="color:#3BC1A4" class="order-btn" wx:if="{{item.activeUserAppointmentStatus === '1' && item.activeUserSignStatus !== '1' }}">
               已预约
-              <button size="mini" class="btn-fixed" type="primary" data-index="{{index}}" 
-              catchtap="isPermitOrder" >签到</button>
             </view>
             <view class="order-btn" wx:if="{{item.activeUserAppointmentStatus === '2'}}">
              
@@ -62,21 +78,10 @@
           </view>
         </view>
       </view>
-      <!--  -->
-    </scroll-view>
-
-
-    <!--  -->
-      
-    </swiper-item>
-    <swiper-item>
-      <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot"> 
-      <view>
-        <image class="img" mode='widthFix' src="./../images/exhibition-introduction.jpg"></image>
-        <image class="img" mode='widthFix' src="./../images/exhibition-introduction.jpg"></image>
-        <image class="img" mode='widthFix' src="./../images/exhibition-introduction.jpg"></image>
+  </view>
+  <view class="{{current === '0' ? 'list-show': ''}}" data-current="0">
+    <view>
+        <image class="img" mode='widthFix' src="{{detail.exhibitionPosterUrl }}"></image>
       </view>
-    </scroll-view>
-    </swiper-item>
-  </swiper>
+  </view>
 </view>

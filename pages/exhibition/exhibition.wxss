@@ -2,55 +2,75 @@
 page { 
   padding: 0 10pt;
 }
+.success-toast-back{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.success-toast-white{
+  background: #ffffff;
+  border-radius: 5pt;
+  width: 70%;
+  height: 46%;
+}
+.success-toast-img{
+  position: absolute;
+  left: 94px;
+  top: 72px;
+}
+.special{
+  color: #3871F2 !important;
+}
 .img{
   width: 100%;
   display: block;
 }
-.swiper-tab{
-  background: #ffffff;
+.tab{
   border-radius: 5pt 5pt 0 0;
-  /* width: 100%; */
-  /* text-align: center; */
-  /* line-height: 36pt; */
-  padding: 10pt;
+  padding-top: 5pt;
+  display: flex;
+  background: #ffffff;
 }
-.swiper-tab-list{  
-  margin-right: 10pt;
-  font-size: 30rpx;
-  display: inline-block;
-  /* width: 50%; */
-  color: #777777;
+.list{
+  background: #ffffff;
+  padding: 5pt 0;
+  border-radius: 0 0 5pt 5pt;
 }
-.on{ color: #4575FF;
+.list-show{
+  display: none;
+}
+.listDetail-show{
+  display: none;
+}
+.actve{
+  margin: 5pt 6pt;
+}
+.active-show{
+  color: #4575FF;
   border-bottom: 2pt solid #4575FF;
 }
+/* .on{ color: #4575FF;
+  border-bottom: 2pt solid #4575FF;
+} */
 .order-btn{
   /* width: 375rpx; */
   box-sizing: border-box;
 }
   .btn-fixed{
-    background: #4575FF !important;
+    background: #3495a2 !important;
     border-radius: 44pt;
-    font-size: 11pt !important;
+    font-size: 10pt !important;
     /* position: fixed;
     bottom: 0;
     width: 300rpx; */
   }
-.swiper{
-  background:#ffffff;
-  border-radius:0 0 5pt 5pt;
-  height:auto !important;
-}
-.swiper-box{ 
-  display: block; 
-  height: 100%; 
-  width: 100%; 
-  overflow: hidden;
-  padding-bottom: 12pt;
- }
-.swiper-box view{
-  text-align: center;
-}
 .tip{
   height: 25pt;
   margin: 10pt 0;
@@ -61,10 +81,13 @@ page {
   background: rgba(69, 117, 255, 0.1);
 }
 /* 活动 */
-.active{
+.activeList{
   background: #ffffff;
-  /* border-radius: 5pt; */
-  padding: 6pt;
+  /* border-radius: 0 0 5pt 5pt; */
+  padding: 6pt 7pt;
+}
+.active-border{
+  border: 1px solid #4575FF;
 }
 .active-list{
   /* margin-bottom: 10pt; */
@@ -73,13 +96,14 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5pt;
-}
-.swiper-box view {
-  text-align: left;
+  padding: 8pt;
 }
 .active-list-info{
   color: #999999;
+  flex:1
+}
+.active-list-status-end{
+  min-width: 40pt;
 }
 .active-pedding{
   background: #21BD9D;
@@ -148,5 +172,6 @@ page {
 }
 .exhibition-list-info-title-right{
   font-size: 11pt;
+  min-width: 40pt;
   color: #999999;
 }

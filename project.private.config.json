@@ -125,6 +125,48 @@
               "pages/index/index"
             ]
           }
+        },
+        {
+          "name": "pages/center/center",
+          "pathName": "pages/center/center",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": false,
+            "pages": [
+              "pages/center/center"
+            ]
+          }
+        },
+        {
+          "name": "pages/turncode/turncode",
+          "pathName": "pages/turncode/turncode",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": false,
+            "pages": [
+              "pages/turncode/turncode"
+            ]
+          }
+        },
+        {
+          "name": "pages/turncode/turncode",
+          "pathName": "pages/turncode/turncode",
+          "query": "",
+          "scene": 1011
+        },
+        {
+          "name": "pages/exhibition/exhibition",
+          "pathName": "pages/exhibition/exhibition",
+          "query": "",
+          "scene": 1011,
+          "partialCompile": {
+            "enabled": false,
+            "pages": [
+              "pages/exhibition/exhibition"
+            ]
+          }
         }
       ]
     }

@@ -23,7 +23,7 @@ page {
   margin: 20pt 10pt;
 }
 .info-item{
-  padding: 10pt;
+  padding: 14pt 10pt;
   border-bottom: 1pt solid #e5e5e5;
   display: flex;
 }
@@ -34,6 +34,7 @@ page {
 .info-item-input{
   color: #999999;
   display: inline!important;
+  flex:1;
 }
 .info-btn-area{
   margin-top: 30pt;

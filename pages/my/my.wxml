@@ -20,61 +20,64 @@
         <text class="info-item-l">姓名</text>
         <view>
           <text>{{userName}}</text>
-          <icon class="iconfont icon-gengduohui nav-icon"></icon>
+          <!-- <icon class="iconfont icon-gengduohui nav-icon"></icon> -->
         </view>
       </view>
       <view class="info-item">
-        <text class="info-item-l">岗位</text>
+        <text class="info-item-l">职务</text>
         <view>
           <text>{{userJob}}</text>
-          <icon class="iconfont icon-gengduohui nav-icon"></icon>
+          <!-- <icon class="iconfont icon-gengduohui nav-icon"></icon> -->
         </view>
       </view>
       <view class="info-item">
         <text class="info-item-l">医院</text>
         <view>
           <text>{{userWorkUnit}}</text>
-          <icon class="iconfont icon-gengduohui nav-icon"></icon>
+          <!-- <icon class="iconfont icon-gengduohui nav-icon"></icon> -->
         </view>
       </view>
       <view class="info-item info-item-border">
         <text class="info-item-l">联系方式</text>
         <view>
           <text>{{userPhone}}</text>
-          <icon class="iconfont icon-gengduohui nav-icon"></icon>
+          <!-- <icon class="iconfont icon-gengduohui nav-icon"></icon> -->
         </view>
       </view>
     </view>
     <view class="record">
       <view class="record-title">参展记录</view>
         <view class="record-list">
-        <view class="exhibition-list" wx:for="{{exbUserOperationList}}" wx:key='key'>
+        <view class="exhibition-list" wx:for="{{exbExhibitionList}}" wx:for-item="exhi" wx:key='key'>
           <view class="exhibition-list-banner">
-            <image class="exhibition-list-banner-img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201409%2F08%2F20140908130732_kVXzh.jpeg&refer=http%3A%2F%2Fcdn.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1626249758&t=f9f26219e759ae07a787e7b9c0a3ea81" alt="" ></image>
+            <image class="exhibition-list-banner-img" src="{{exhi.exhibitionBannerUrl }}" alt="" ></image>
             <view class="banner-floating">
-              <text>{{item.exhibitionName}}</text>
+              <text>{{exhi.exhibitionName}}</text>
             </view>
           </view>
-          <view class="active">
+          <view class="active" wx:key='key' wx:for="{{exhi.activeList}}"  wx:for-item="active">
+            <view class="{{(index > 0 ) ? 'active-line': ''}}"></view>
             <view class="exhibition-list-info">
               <view class="active-left">
-              <view>{{item.activeName}}</view>
+              <text>{{active.activeName}}</text>
+              <view style="display:inline-block;margin-left:5pt" class="active-r active-list-status-end" >
+                <view class="{{activeStateClass[active.activeStatus]}}">
+                {{activeState[active.activeStatus]}}
+                </view>
+              </view>
               <view class="exhibition-list-info-time" >
                 <icon class="iconfont icon-shijian"></icon>
-                {{item.updateTime}}
+                {{active.activeStartTime}}
               </view>
               <view class="exhibition-list-info-position" >
                 <icon class="iconfont icon-didian"></icon>
-                  上海宝山体育馆
+                {{active.activeAddress}}
                   </view>
               </view>
-              <view class="active-r active-list-status-end">
-              已结束
-              </view>
             </view>
-            <view wx:if="" class="active-line"></view>
           </view>
         </view>
+        <!--  -->
       </view>
     </view>
   </view>

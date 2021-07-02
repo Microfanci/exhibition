@@ -23,7 +23,7 @@
       </view>
 
       <view class="info-btn-area ">
-        <button class="{{(a|| b || c) ? 'btn-dis':' btn-blue'}}" bindgetphonenumber="getPhoneNumber" formType="submit" disabled="{{a || b || c}}" open-type="getPhoneNumber">授权联系方式登录</button>
+        <button class="{{((a|| b || c) || flag) ? 'btn-dis':' btn-blue'}}" bindgetphonenumber="getPhoneNumber" formType="submit" disabled="{{(a || b || c) || flag}}" open-type="getPhoneNumber">授权联系方式登录</button>
       </view>
     </form>
   </view>

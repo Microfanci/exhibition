@@ -8,18 +8,20 @@
     "pages/card/card",
     "pages/exhibition/exhibition",
     "pages/contact/contact",
-    "pages/sign/sign"
+    "pages/sign/sign",
+    "pages/center/center",
+    "pages/turncode/turncode"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#3871F2",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "white"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "useExtendedLib": {
-    "kbone":true,
-    "weui":true
+    "kbone": true,
+    "weui": true
   }
 }
